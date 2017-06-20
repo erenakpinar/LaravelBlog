@@ -1,6 +1,6 @@
 
 @extends('masterpage')
-@section('title', 'Kolay İka')
+@section('title', 'Kaktüs Yazılım')
 @section('content')
     <h1 class="page-header">
        Anasayfa

@@ -39,7 +39,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{url('/')}}">Kolay İka</a>
+            <a class="navbar-brand" href="{{url('/')}}">Kaktüs Yazılım</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -74,7 +74,7 @@
 
             <!-- Blog Search Well -->
             <div class="well">
-                <h4>Blog Search</h4>
+                <h4>Arama</h4>
                 <div class="input-group">
                     <input type="text" class="form-control">
                     <span class="input-group-btn">
@@ -122,8 +122,8 @@
 
             <!-- Side Widget Well -->
             <div class="well">
-                <h4>Side Widget Well</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                <h4>İletişim</h4>
+                <p>info@kaktusyazilim.com</p>
             </div>
 
         </div>
