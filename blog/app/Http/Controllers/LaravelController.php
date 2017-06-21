@@ -20,7 +20,8 @@ class LaravelController extends Controller
                 'header_img' => $post->header_img,
                 'publish_date' => $post->publish_date,
                 'author' => $post->first_name . " " . $post->last_name,
-                'url' => Helpers\SeoHelper::ReplaceSeoUrl($post->name)
+                'url' => Helpers\SeoHelper::ReplaceSeoUrl($post->name),
+                'content' => $post->content
 
             );
         }
@@ -43,12 +44,12 @@ class LaravelController extends Controller
     {
 
         if ($name) {
-            $post = Models\PostModel::getPostByName($name);
+            $post = Models\PostModel::getPostDetailsByUrl($name);
         } else {
-            $deger = 'Parametre Değeri Bulunmamaktadır';
+
         }
 
-        return view('post');
+        return view('post', ['post' => $post]);
 
     }
 }

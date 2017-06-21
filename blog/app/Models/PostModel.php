@@ -18,11 +18,13 @@ class PostModel extends BaseModel
         return self::find($id);
     }
 
-    public static function getPostByName($name)
+    public static function getPostDetailsByUrl($name)
     {
-        return self::where('seo_url', $name)->first();
-    }
+        return self::where('seo_url', $name)
+            ->join('author', 'post.author_id', '=', 'author.id')
+            ->first();
 
+    }
     public static function getPublishPost()
     {
         return self::where('status', 'publish')
