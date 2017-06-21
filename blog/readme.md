@@ -1,18 +1,18 @@
 # Laravel Blog
 ## Database
 
-###author table
+###author table <br>
 id int not null PK<br>
 username varchar(30)<br>
 first_name varchar(30)<br>
 last_name varchar(30)<br>
 email varchar(50)<br>
 
-###category table
+###category table <br>
 id int not null PK <br> 
 name varchar(30)
 
-###post table
+###post table <br>
 id int not null PK<br>
 name varchar(200) <br>
 content varchar <br>
