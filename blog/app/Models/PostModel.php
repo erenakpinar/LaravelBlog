@@ -7,6 +7,8 @@ use App\Helpers;
 class PostModel extends BaseModel
 {
     protected $table = 'post';
+    protected $fillable = ['name', 'content', 'header_img', 'publish_date', 'created_date', 'status', 'author_id', 'seo_url', 'view'];
+    public $timestamps = false;
 
     public static function getPost()
     {
@@ -18,10 +20,16 @@ class PostModel extends BaseModel
         return self::find($id);
     }
 
-    public static function getPostDetailsByUrl($name)
+    public static function getPostWithAuthorDetailsByUrl($name)
     {
         return self::where('seo_url', $name)
             ->join('author', 'post.author_id', '=', 'author.id')
+            ->first();
+
+    }
+    public static function getPostDetailsByUrl($name)
+    {
+        return self::where('seo_url', $name)
             ->first();
 
     }
@@ -36,5 +44,11 @@ class PostModel extends BaseModel
         return self::where('status', 'publish')
             ->join('author', 'post.author_id', '=', 'author.id')
             ->get();
+    }
+
+    public static function postViewUpdate($url)
+    {
+        $post = self::getPostDetailsByUrl($url);
+        $post->update(['view' => $post->view + 1]);
     }
 }

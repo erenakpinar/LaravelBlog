@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models;
 use App\Http\Requests;
 use App\Helpers;
+use App\Classes;
 
 class LaravelController extends Controller
 {
@@ -25,9 +26,7 @@ class LaravelController extends Controller
 
             );
         }
-
         return view('index', ['posts' => $postArr]);
-
     }
 
     public function about()
@@ -44,12 +43,18 @@ class LaravelController extends Controller
     {
 
         if ($name) {
-            $post = Models\PostModel::getPostDetailsByUrl($name);
+            $post = Models\PostModel::getPostWithAuthorDetailsByUrl($name);
+            if ($post==null)
+            {
+                return view('page404');
+            }
+            Models\PostModel::postViewUpdate($name);
         } else {
-
+            return view('page404');
         }
 
         return view('post', ['post' => $post]);
 
     }
+
 }
