@@ -5,28 +5,28 @@
         Anasayfa
         <small>Bloglar</small>
     </h1>
-    <?php foreach ($posts as $post) { ?>
-    <!-- First Blog Post -->
-    <h2>
-        <a href="#"><?php echo $post['name']; ?></a>
-    </h2>
-    <p class="lead">
-        by <a href="index.php">
-            <?php
-            echo App\Models\AuthorModel::getAuthorById($post['author'])->username;
-            ?>
-        </a>
-        <span class="glyphicon glyphicon-time"></span> <?php echo $post['publish_date']; ?></p>
-    <hr>
-    <img class="img-responsive" src="<?php echo $post['header_img']; ?>" alt="<?php echo $post['name']; ?>">
-    <hr>
-    <p><?php //echo substr($post['content'], 0, 500); ?></p>
-    <a class="btn btn-primary" href="#">Okumaya Devam Et <span class="glyphicon glyphicon-chevron-right"></span></a>
+    @foreach ($posts as $post)
 
-    <hr>
-    <?php
-    }
-    ?>
+        <h2>
+            <a href="#">{{$post['name']}}</a>
+        </h2>
+        <p class="lead">
+            <i class="fa fa-user"></i>
+            <a href="">
+                {{$post['author']}}
+            </a>
+            <span class="fa fa-clock-o"></span>
+            {{date("d-m-Y", strtotime($post['publish_date']))}}
+        </p>
+        <hr>
+        <img class="img-responsive" src="{{$post['header_img']}}" alt="{{$post['name']}}">
+        <hr>
+
+        <a class="btn btn-primary" href="#">Okumaya Devam Et <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+        <hr>
+    @endforeach
+
 
     <!-- Pager -->
     <ul class="pager">

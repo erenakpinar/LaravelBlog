@@ -10,11 +10,20 @@ class LaravelController extends Controller
 {
     public function anasayfa()
     {
-        // $posts = \DB::table('post')->get();
-        //$authors = \DB::table('author')->get();
-        $posts = Models\PostModel::getPost();
-        $authors = Models\AuthorModel::getAuthor();
-        return view('anasayfa', ['posts' => $posts, 'authors' => $authors]);
+
+        $postArr = array();
+        $posts = Models\PostModel::getPublishPostWithAuthor();
+        foreach ($posts as $post) {
+            $postArr[] = array(
+                'name' => $post->name,
+                'header_img' => $post->header_img,
+                'publish_date' => $post->publish_date,
+                'author' => $post->first_name . " " . $post->last_name
+            );
+        }
+
+        return view('anasayfa', ['posts' => $postArr]);
+
     }
 
     public function hakkimizda()
