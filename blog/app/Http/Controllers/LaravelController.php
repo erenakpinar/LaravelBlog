@@ -39,19 +39,16 @@ class LaravelController extends Controller
         return view('contact');
     }
 
-    public function post($id = null)
+    public function post($name = null)
     {
 
-        if ($id) {
-            $deger = $id;
+        if ($name) {
+            $post = Models\PostModel::getPostByName($name);
         } else {
             $deger = 'Parametre Değeri Bulunmamaktadır';
         }
 
-        $title = "Parametre Denemesi";
-        $keywords = "Parametre Denemesi Anahtar Kelimeler";
-        $sayfa = "Parametre Denemesi Sayfasındayız";
-        return view('post', compact('title', 'keywords', 'sayfa', 'deger', 'id'));
+        return view('post');
 
     }
 }

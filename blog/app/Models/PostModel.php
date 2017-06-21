@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Helpers;
+
 class PostModel extends BaseModel
 {
     protected $table = 'post';
@@ -16,6 +18,11 @@ class PostModel extends BaseModel
         return self::find($id);
     }
 
+    public static function getPostByName($name)
+    {
+        return self::where('seo_url', $name)->first();
+    }
+
     public static function getPublishPost()
     {
         return self::where('status', 'publish')
@@ -28,6 +35,4 @@ class PostModel extends BaseModel
             ->join('author', 'post.author_id', '=', 'author.id')
             ->get();
     }
-
-
 }
