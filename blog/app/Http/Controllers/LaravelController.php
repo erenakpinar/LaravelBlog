@@ -9,7 +9,7 @@ use App\Helpers;
 
 class LaravelController extends Controller
 {
-    public function anasayfa()
+    public function index()
     {
 
         $postArr = array();
@@ -25,24 +25,24 @@ class LaravelController extends Controller
             );
         }
 
-        return view('anasayfa', ['posts' => $postArr]);
+        return view('index', ['posts' => $postArr]);
 
     }
 
-    public function hakkimizda()
+    public function about()
     {
         $title = "Hakkımızda";
         $keywords = "Hakkımızda Anahtar Kelimeler";
         $sayfa = "Hakkımızda Sayfasındayız";
-        return view('hakkimizda')->with('sayfaTitle', $title)->with('sayfaKeywords', $keywords)->with('sayfaIsmi', $sayfa);
+        return view('about')->with('sayfaTitle', $title)->with('sayfaKeywords', $keywords)->with('sayfaIsmi', $sayfa);
     }
 
-    public function iletisim()
+    public function contact()
     {
         $title = "İletişim";
         $keywords = "İletişim Anahtar Kelimeler";
         $sayfa = "İletişim Sayfasındayız";
-        return view('iletisim', compact('title', 'keywords', 'sayfa'));
+        return view('contact', compact('title', 'keywords', 'sayfa'));
     }
 
     public function post($id = null)
