@@ -28,8 +28,6 @@
         <hr>
     @endforeach
 
-
-    <!-- Pager -->
     <ul class="pager">
         <li class="previous">
             <a href="#">&larr; Older</a>
