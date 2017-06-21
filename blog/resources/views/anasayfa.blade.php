@@ -1,4 +1,5 @@
 @extends('masterpage')
+
 @section('title', 'Kaktüs Yazılım')
 @section('content')
     <h1 class="page-header">
@@ -8,7 +9,7 @@
     @foreach ($posts as $post)
 
         <h2>
-            <a href="#">{{$post['name']}}</a>
+            <a href="{{url('yazi/'.$post['url'])}}">{{$post['name']}}</a>
         </h2>
         <p class="lead">
             <i class="fa fa-user"></i>

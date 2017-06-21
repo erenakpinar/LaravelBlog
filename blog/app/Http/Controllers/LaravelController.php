@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models;
 use App\Http\Requests;
+use App\Helpers;
 
 class LaravelController extends Controller
 {
@@ -18,7 +19,9 @@ class LaravelController extends Controller
                 'name' => $post->name,
                 'header_img' => $post->header_img,
                 'publish_date' => $post->publish_date,
-                'author' => $post->first_name . " " . $post->last_name
+                'author' => $post->first_name . " " . $post->last_name,
+                'url' => Helpers\SeoHelper::ReplaceSeoUrl($post->name)
+
             );
         }
 
