@@ -3,8 +3,8 @@
 @section('title', 'Kaktüs Yazılım')
 @section('content')
     <h1 class="page-header">
-        Anasayfa
-        <small>Bloglar</small>
+        Kategori
+        <small>Yazıları</small>
     </h1>
     @foreach ($posts as $post)
 

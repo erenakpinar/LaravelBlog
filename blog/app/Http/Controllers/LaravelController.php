@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models;
 use App\Http\Requests;
-use App\Helpers;
-use App\Classes;
 
 class LaravelController extends Controller
 {
@@ -29,18 +26,16 @@ class LaravelController extends Controller
 
     public function post($name = null)
     {
-
-        if ($name) {
-            $post = Models\PostModel::getPostWithAuthorDetailsByUrl($name);
-            if ($post == null) {
-                return view('page404');
-            }
-
-            Models\PostModel::postViewUpdate($post->id);
-        } else {
+        if (!$name) {
             return view('page404');
         }
 
+        $post = Models\PostModel::getPostWithAuthorDetailsByUrl($name);
+        if ($post == null) {
+            return view('page404');
+        }
+
+        Models\PostModel::postViewUpdate($post->id);
         return view('post', ['post' => $post]);
 
     }
@@ -54,14 +49,13 @@ class LaravelController extends Controller
     {
         return view('contact');
     }
+
     public function category($urlName)
     {
-
         $postArr = array();
         $posts = Models\CategoryModel::getCategoryPostByUrl($urlName);
 
         foreach ($posts as $post) {
-
             $postArr[] = array(
                 'name' => $post->name,
                 'header_img' => $post->header_img,
@@ -72,8 +66,8 @@ class LaravelController extends Controller
         }
 
         return view('category', ['posts' => $postArr]);
-
     }
+
     public function search()
     {
         $value = $_GET['search'];
