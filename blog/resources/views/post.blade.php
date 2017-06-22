@@ -8,11 +8,20 @@
 
     <p class="lead">
         <i class="fa fa-user"></i> <a href="#">{{$post->first_name . " " . $post->last_name}}</a>
+
     </p>
 
     <hr>
-    <p><span class="fa fa-clock-o"></span>
-        {{date("d F Y H:m", strtotime($post['publish_date']))}} tarihinde yayınlandı.
+    <p>
+        <span class="left">
+            <i class="fa fa-bar-chart" aria-hidden="true"></i> {{$post['view']}} görüntülenme
+        </span>
+        <span class="pull-right">
+            <span class="fa fa-clock-o"></span>
+            {{date("d F Y H:m", strtotime($post['publish_date']))}} tarihinde yayınlandı.
+        </span>
+
+
     </p>
 
     <hr>
@@ -21,7 +30,8 @@
     <img class="img-responsive" src="{{$post['header_img']}}" alt="{{$post['name']}}">
 
     <hr>
-    <div> {!! $post->content !!}</div>
+    <div class="post-content"> {!! $post->content !!}</div>
+
     <hr>
 
     <!-- Blog Comments -->

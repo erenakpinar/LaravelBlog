@@ -24,19 +24,23 @@ class PostModel extends BaseModel
     {
         return self::where('seo_url', $name)
             ->join('author', 'post.author_id', '=', 'author.id')
+            ->select('post.id', 'post.name', 'post.seo_url', 'post.content', 'post.view', 'post.publish_date', 'post.header_img', 'author.first_name', 'author.last_name')
             ->first();
 
     }
+
     public static function getPostDetailsByUrl($name)
     {
         return self::where('seo_url', $name)
             ->first();
 
     }
+
     public static function getPublishPost()
     {
         return self::where('status', 'publish')
-            ->get()->toArray();
+            ->get()
+            ->toArray();
     }
 
     public static function getPublishPostWithAuthor()
@@ -46,9 +50,18 @@ class PostModel extends BaseModel
             ->get();
     }
 
-    public static function postViewUpdate($url)
+    public static function postViewUpdate($id)
     {
-        $post = self::getPostDetailsByUrl($url);
+        $post = self::getPostById($id);
         $post->update(['view' => $post->view + 1]);
+    }
+
+    public static function postSearch($value)
+    {
+        return self::where('name', 'LIKE', "%$value%")
+            //->where('content', 'LIKE', "%$value%")
+            ->join('author', 'post.author_id', '=', 'author.id')
+            ->get();
+
     }
 }

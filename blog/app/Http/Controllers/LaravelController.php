@@ -22,11 +22,27 @@ class LaravelController extends Controller
                 'publish_date' => $post->publish_date,
                 'author' => $post->first_name . " " . $post->last_name,
                 'url' => Helpers\SeoHelper::ReplaceSeoUrl($post->name),
-                'content' => $post->content
-
             );
         }
         return view('index', ['posts' => $postArr]);
+    }
+
+    public function post($name = null)
+    {
+
+        if ($name) {
+            $post = Models\PostModel::getPostWithAuthorDetailsByUrl($name);
+            if ($post == null) {
+                return view('page404');
+            }
+
+            Models\PostModel::postViewUpdate($post->id);
+        } else {
+            return view('page404');
+        }
+
+        return view('post', ['post' => $post]);
+
     }
 
     public function about()
@@ -39,22 +55,21 @@ class LaravelController extends Controller
         return view('contact');
     }
 
-    public function post($name = null)
+    public function search($value)
     {
+        $postArr = array();
+        $posts = Models\PostModel::postSearch($value);
 
-        if ($name) {
-            $post = Models\PostModel::getPostWithAuthorDetailsByUrl($name);
-            if ($post==null)
-            {
-                return view('page404');
-            }
-            Models\PostModel::postViewUpdate($name);
-        } else {
-            return view('page404');
+        foreach ($posts as $post) {
+            $postArr[] = array(
+                'name' => $post->name,
+                'header_img' => $post->header_img,
+                'publish_date' => $post->publish_date,
+                'author' => $post->first_name . " " . $post->last_name,
+                'url' => Helpers\SeoHelper::ReplaceSeoUrl($post->name),
+            );
         }
-
-        return view('post', ['post' => $post]);
+        return view('search', ['posts' => $postArr, 'value' => $value]);
 
     }
-
 }
