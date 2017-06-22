@@ -7,4 +7,5 @@
         <small>Bloglar</small>
     </h1>
     @include('partials.postlist')
+
 @endsection

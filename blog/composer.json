@@ -25,7 +25,10 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "classmap":[
+            "database/seeds/UserTableSeeder.php"
+        ]
     },
     "scripts": {
         "post-root-package-install": [
