@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Helpers;
-
 class PostModel extends BaseModel
 {
     protected $table = 'post';
@@ -60,6 +58,7 @@ class PostModel extends BaseModel
     {
         return self::where('name' , 'ilike', "%$value%")
             ->orWhere('content', 'ilike', "%$value%")
+            ->join('author', 'post.author_id', '=', 'author.id')
             ->get();
     }
 }
