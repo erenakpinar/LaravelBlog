@@ -17,16 +17,18 @@ class LaravelController extends Controller
 
     public function post($name = null)
     {
+        // boş gelirse 404
         if (!$name) {
             return view('page404');
         }
-
+        //postu çek
         $post = Models\PostModel::getPostWithAuthorDetailsByUrl($name);
+        //post nullsa 404
         if ($post == null) {
             return view('page404');
         }
 
-        Models\PostModel::postViewUpdate($post->id);
+        Models\PostModel::postViewUpdate($post->id); // görüntülenme arttırmak
         return view('post', ['post' => $post]);
 
     }
