@@ -17,4 +17,14 @@ class CategoryModel extends BaseModel
     {
         return self::all()->toArray();
     }
+
+    public static function getCategoryPostByUrl($url)
+    {
+        return self::where('url', $url)
+            ->first()
+            ->join('postcategory as postcat', 'category.id', '=', 'postcat.category_id')
+            ->join('post', 'postcat.post_id', '=', 'post.id')
+            ->join('author', 'post.author_id', '=', 'author.id')
+            ->get();
+    }
 }

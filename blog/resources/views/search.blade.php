@@ -21,7 +21,7 @@
     @else
         @foreach ($posts as $post)
             <h2>
-                <a href="{{url('yazi/'.$post['url'])}}">{{$post['name']}}</a>
+                <a href="{{url('yazi/'.$post['seo_url'])}}">{{$post['name']}}</a>
             </h2>
             <p class="lead">
                 <i class="fa fa-user"></i>

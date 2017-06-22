@@ -58,10 +58,8 @@ class PostModel extends BaseModel
 
     public static function postSearch($value)
     {
-        return self::where('name', 'LIKE', "%$value%")
-            //->where('content', 'LIKE', "%$value%")
-            ->join('author', 'post.author_id', '=', 'author.id')
+        return self::where('name' , 'ilike', "%$value%")
+            ->orWhere('content', 'ilike', "%$value%")
             ->get();
-
     }
 }

@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Providers;
+
 use App\Models;
 use Illuminate\Support\ServiceProvider;
+use App\Helpers;
 
 class ViewComposerServiceProvider extends ServiceProvider
 {

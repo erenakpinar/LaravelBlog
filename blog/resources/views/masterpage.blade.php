@@ -65,14 +65,16 @@
 
             <div class="well">
                 <h4>Arama</h4>
-                <div class="input-group">
-                    <input type="text" id="txtSearch" class="form-control">
-                    <span class="input-group-btn">
+                <form action="/arama/" method="get">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control">
+                        <span class="input-group-btn">
                             <button class="btn btn-default" type="submit" id="btnSearch">
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
                     </span>
-                </div>
+                    </div>
+                </form>
             </div>
             @include('partials.categories')
             <div class="well">
@@ -97,11 +99,7 @@
 
 <script src="{{asset('js/jquery.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script>
-    $('#btnSearch').click(function () {
-        window.location = '/arama/' + $('#txtSearch').val();
-    });
-</script>
+
 </body>
 
 </html>

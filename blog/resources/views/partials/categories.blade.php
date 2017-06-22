@@ -7,7 +7,7 @@
             <ul class="list-unstyled">
                 @foreach($category as $cat)
                     <li>
-                        <a href="#">{{$cat['name']}}</a>
+                        <a href="{{url('/kategori/'.$cat['url'])}}">{{$cat['name']}}</a>
                     </li>
 
                 @endforeach

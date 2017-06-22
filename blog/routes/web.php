@@ -8,4 +8,6 @@ Route::get('/iletisim', 'LaravelController@contact');
 
 Route::get('/yazi/{name?}', 'LaravelController@post');
 
-Route::get('/arama/{value?}', 'LaravelController@search');
+Route::get('/arama', 'LaravelController@search');
+
+Route::get('/kategori/{urlName?}', 'LaravelController@category');

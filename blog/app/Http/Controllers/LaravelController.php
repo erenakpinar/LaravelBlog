@@ -21,7 +21,7 @@ class LaravelController extends Controller
                 'header_img' => $post->header_img,
                 'publish_date' => $post->publish_date,
                 'author' => $post->first_name . " " . $post->last_name,
-                'url' => Helpers\SeoHelper::ReplaceSeoUrl($post->name),
+                'seo_url' => $post->seo_url
             );
         }
         return view('index', ['posts' => $postArr]);
@@ -54,9 +54,29 @@ class LaravelController extends Controller
     {
         return view('contact');
     }
-
-    public function search($value)
+    public function category($urlName)
     {
+
+        $postArr = array();
+        $posts = Models\CategoryModel::getCategoryPostByUrl($urlName);
+
+        foreach ($posts as $post) {
+
+            $postArr[] = array(
+                'name' => $post->name,
+                'header_img' => $post->header_img,
+                'publish_date' => $post->publish_date,
+                'author' => $post->first_name . " " . $post->last_name,
+                'seo_url' => $post->seo_url
+            );
+        }
+
+        return view('category', ['posts' => $postArr]);
+
+    }
+    public function search()
+    {
+        $value = $_GET['search'];
         $postArr = array();
         $posts = Models\PostModel::postSearch($value);
 
@@ -66,7 +86,7 @@ class LaravelController extends Controller
                 'header_img' => $post->header_img,
                 'publish_date' => $post->publish_date,
                 'author' => $post->first_name . " " . $post->last_name,
-                'url' => Helpers\SeoHelper::ReplaceSeoUrl($post->name),
+                'seo_url' => $post->seo_url,
             );
         }
         return view('search', ['posts' => $postArr, 'value' => $value]);
