@@ -90,7 +90,7 @@
     <footer>
         <div class="row">
             <div class="col-lg-12">
-                <p>Copyright &copy; Kolay Yazılım 2017</p>
+                <p>Copyright &copy; Kaktüs Yazılım 2017</p>
             </div>
         </div>
     </footer>
