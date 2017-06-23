@@ -11,3 +11,7 @@ Route::get('/yazi/{name?}', 'LaravelController@post');
 Route::get('/arama', 'LaravelController@search');
 
 Route::get('/kategori/{urlName?}', 'LaravelController@category');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
