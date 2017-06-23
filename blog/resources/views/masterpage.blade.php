@@ -44,6 +44,7 @@
                 <li>
                     <a href="{{url('/iletisim')}}">İletişim</a>
                 </li>
+
             </ul>
         </div>
     </div>
@@ -78,6 +79,13 @@
             <div class="well">
                 <h4>İletişim</h4>
                 <p>info@kaktusyazilim.com</p>
+            </div>
+            <div class="well">
+                <h4>Giriş Yap</h4>
+                <p>
+                    <a href="{{url('/login')}}">Giriş Yap</a>
+                    <a href="{{url('/register')}}">Kayıt Ol</a>
+                </p>
             </div>
 
         </div>

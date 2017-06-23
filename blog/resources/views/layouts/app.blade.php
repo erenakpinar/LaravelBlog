@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Kaktüs YAzılım Blog</title>
+    <title>{{ config('app.name', 'Kaktüs Blog') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -28,8 +28,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        Kaktüs Yazılım Blog
+                    <a class="navbar-brand" href="{{ url('/home') }}">
+                        {{ config('app.name', 'Kaktüs Blog') }}
                     </a>
                 </div>
 

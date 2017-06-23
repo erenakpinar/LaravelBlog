@@ -15,3 +15,4 @@ Route::get('/kategori/{urlName?}', 'LaravelController@category');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/adminn', 'AdminController@index')->name('home');
