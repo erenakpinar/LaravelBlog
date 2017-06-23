@@ -17,6 +17,7 @@ class UserTableSeeder extends Seeder
         Models\UserModel::create(array(
             'name'     => 'Eren Akpınar',
             'email'    => 'ea@erenakpinar.com',
+            'profile_img' => 'admintemplate/dist/img/avatar04.png',
             'password' => Hash::make('1'),
         ));
     }

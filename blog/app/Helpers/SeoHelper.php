@@ -21,4 +21,5 @@ class SeoHelper
         $s = trim($s, '-');
         return $s;
     }
+
 }

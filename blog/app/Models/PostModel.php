@@ -61,4 +61,8 @@ class PostModel extends BaseModel
             ->join('author', 'post.author_id', '=', 'author.id')
             ->get();
     }
+    public static function getPostCount()
+    {
+        return self::count();
+    }
 }

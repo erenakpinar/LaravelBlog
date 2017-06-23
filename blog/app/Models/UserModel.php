@@ -13,4 +13,9 @@ class UserModel extends BaseModel
 {
     protected $table = 'users';
 
+
+    public static function getUserCount()
+    {
+        return self::count();
+    }
 }

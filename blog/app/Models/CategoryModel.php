@@ -25,7 +25,9 @@ class CategoryModel extends BaseModel
             ->join('post', 'postcat.post_id', '=', 'post.id')
             ->join('author', 'post.author_id', '=', 'author.id')
             ->get();
-
-
+    }
+    public static function getCatCount()
+    {
+        return self::count();
     }
 }
