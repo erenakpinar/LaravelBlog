@@ -15,32 +15,22 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $tr = array('ş', 'Ş', 'ı', 'I', 'İ', 'ğ', 'Ğ', 'ü', 'Ü', 'ö', 'Ö', 'Ç', 'ç', '(', ')', '/', ':', ',', '.', '…', '?', '“', '”', ' ', '–', '-');
-        $en = array('s', 's', 'i', 'i', 'i', 'g', 'g', 'u', 'u', 'o', 'o', 'c', 'c', '', '', '-', '-', '', '', '', '', '', '', ' ', '', '');
-        $end = array('  ');
-        $end2 = array(' ');
-        $postContent = Models\PostModel::getPostById(1)->content;
-        $postContent = strip_tags($postContent);
-        $echo = str_replace($tr, $en, $postContent);
-        $echo = str_replace($end, $end2, $echo);
-        $wordExplode = explode(" ", $echo);
-        echo count($wordExplode) . '<br>';
-        $count = str_word_count($echo, 1);
-        echo count($count). '<br>' ;
-        var_dump(str_word_count($echo, 1));
+        $posts = Models\PostModel::getAllPost();
 
-        /* var_dump(str_word_count(Helpers\SeoHelper::ReplaceSeoUrl($postContent), 1));
-         $wordExplode = explode(". ", $postContent);
-         echo '<br>';
-         echo count($wordExplode) . '<br>';
-         echo $postContent;*/
-        die;
-
+        $totalWord = 0;
+        foreach ($posts as $post) {
+            $postContent = $post->content;
+            $postContent = nl2br($postContent);
+            $postContent = strip_tags($postContent);
+            $postContent = str_replace('-', ' ', $postContent);
+            $totalWord += count(explode(' ', $postContent));
+        }
 
         return View('admin/home',
             ['postCount' => Models\PostModel::getPostCount(),
                 'catCount' => Models\CategoryModel::getCatCount(),
-                'userCount' => Models\UserModel::getUserCount()
+                'userCount' => Models\UserModel::getUserCount(),
+                'wordCount' => $totalWord
             ]);
     }
 

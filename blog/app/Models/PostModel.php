@@ -12,7 +12,10 @@ class PostModel extends BaseModel
     {
         return self::all()->toArray();
     }
-
+    public static function getAllPost()
+    {
+        return self::all();
+    }
     public static function getPostById($id)
     {
         return self::find($id);
