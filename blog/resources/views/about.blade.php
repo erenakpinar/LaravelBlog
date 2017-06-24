@@ -1,9 +1,6 @@
 @extends('masterpage')
 @section('title', 'Hakkımızda')
 @section('content')
-    @for($i = 0; $i<count($text); $i++)
-        <b> {{$i}} - {{$text[$i]}}</b><br>
-    @endfor
     <h1 class="page-header">Hakkımızda
         <small>
             Merhaba!

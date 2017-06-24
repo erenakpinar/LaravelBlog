@@ -13,6 +13,7 @@ class CategoryModel extends BaseModel
 {
     protected $table = 'category';
     public $timestamps = false;
+
     public static function getCategory()
     {
         return self::all()->toArray();
@@ -26,6 +27,7 @@ class CategoryModel extends BaseModel
             ->join('author', 'post.author_id', '=', 'author.id')
             ->get();
     }
+
     public static function getCatCount()
     {
         return self::count();

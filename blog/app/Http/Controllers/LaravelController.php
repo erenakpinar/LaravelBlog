@@ -35,14 +35,7 @@ class LaravelController extends Controller
 
     public function about()
     {
-
-        $postContent = Models\PostModel::getPostById(1)->content;
-        $postContent = nl2br($postContent);
-        $postContent = strip_tags($postContent);
-        $postContent = str_replace('-',' ',$postContent);
-        $wordExplode = explode(' ' , $postContent);
-
-        return view('about', ['text' => $wordExplode]);
+        return view('about');
     }
 
     public function contact()
