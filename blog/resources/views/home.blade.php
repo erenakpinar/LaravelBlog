@@ -13,7 +13,9 @@
                         </div>
 
                         <p>
-                            <a href="/admin" class="btn btn-default"> Admin Panel</a>
+                            @if(Auth::user()->role ==0)
+                                <a href="/admin" class="btn btn-default"> Admin Panel</a>
+                            @endif
                         </p>
                     </div>
                 </div>

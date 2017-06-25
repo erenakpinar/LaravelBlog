@@ -17,14 +17,18 @@
         <a href="">
             {{$post['author']}}
         </a>
-        <span class="fa fa-clock-o"></span>
-        {{date("d-m-Y", strtotime($post['publish_date']))}}
+        @if(!empty($post['publish_date']))
+            <span class="fa fa-clock-o"></span>
+            {{date("d-m-Y", strtotime($post['publish_date']))}}
+        @endif
+
     </p>
     <hr>
     <img class="img-responsive" src="{{$post['header_img']}}" alt="{{$post['name']}}">
     <hr>
 
-    <a class="btn btn-primary" href="{{url('yazi/'.$post['seo_url'])}}">Okumaya Devam Et <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a class="btn btn-primary" href="{{url('yazi/'.$post['seo_url'])}}">Okumaya Devam Et <span
+                class="glyphicon glyphicon-chevron-right"></span></a>
 
     <hr>
 @endforeach

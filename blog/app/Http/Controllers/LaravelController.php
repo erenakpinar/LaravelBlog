@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models;
-use App\Http\Requests;
 use App\Classes;
 
 class LaravelController extends Controller
@@ -25,6 +24,10 @@ class LaravelController extends Controller
         $post = Models\PostModel::getPostWithAuthorDetailsByUrl($name);
         //post nullsa 404
         if ($post == null) {
+            return view('page404');
+        }
+
+        if ($post->status != 'publish') {
             return view('page404');
         }
 

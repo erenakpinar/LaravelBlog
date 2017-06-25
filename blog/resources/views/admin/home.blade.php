@@ -5,6 +5,7 @@
  * Date: 23/06/2017
  * Time: 10:41
  */
+
 ?>
 @extends('admin.layouts.layout')
 @section('page','Dashboard')

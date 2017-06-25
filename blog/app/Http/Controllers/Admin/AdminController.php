@@ -13,8 +13,10 @@ use App\Classes;
 
 class AdminController extends Controller
 {
+
     public function index()
     {
+
         return View('admin/home',
             ['postCount' => Models\PostModel::getPostCount(),
                 'catCount' => Models\CategoryModel::getCatCount(),

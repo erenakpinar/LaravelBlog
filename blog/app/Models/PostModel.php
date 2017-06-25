@@ -12,20 +12,31 @@ class PostModel extends BaseModel
     {
         return self::all()->toArray();
     }
+
     public static function getAllPost()
     {
         return self::all();
     }
+
     public static function getPostById($id)
     {
         return self::find($id);
+    }
+
+    public static function getPostList()
+    {
+        return self::join('users', 'post.author_id', '=', 'users.id')
+            ->select('post.id', 'post.name', 'post.view', 'post.publish_date', 'post.created_date', 'post.header_img', 'post.status', 'users.name as user_name', 'users.profile_img','post.seo_url')
+            ->get()
+            ->toArray();
+
     }
 
     public static function getPostWithAuthorDetailsByUrl($name)
     {
         return self::where('seo_url', $name)
             ->join('author', 'post.author_id', '=', 'author.id')
-            ->select('post.id', 'post.name', 'post.seo_url', 'post.content', 'post.view', 'post.publish_date', 'post.header_img', 'author.first_name', 'author.last_name')
+            ->select('post.id', 'post.name', 'post.seo_url', 'post.content', 'post.view', 'post.publish_date', 'post.header_img', 'author.first_name', 'author.last_name', 'post.status')
             ->first();
 
     }
@@ -59,11 +70,12 @@ class PostModel extends BaseModel
 
     public static function postSearch($value)
     {
-        return self::where('name' , 'ilike', "%$value%")
+        return self::where('name', 'ilike', "%$value%")
             ->orWhere('content', 'ilike', "%$value%")
             ->join('author', 'post.author_id', '=', 'author.id')
             ->get();
     }
+
     public static function getPostCount()
     {
         return self::count();

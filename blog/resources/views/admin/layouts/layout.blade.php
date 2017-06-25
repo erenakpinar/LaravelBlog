@@ -153,7 +153,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu"><li>
-                            <a href=""><i class="fa fa-navicon"></i> Post List</a></li>
+                            <a href="{{url('/admin/postlist')}}"><i class="fa fa-navicon"></i> Post List</a></li>
                         <li><a href=""><i class="fa fa-plus-circle"></i> New Post</a></li>
                     </ul>
                 </li>

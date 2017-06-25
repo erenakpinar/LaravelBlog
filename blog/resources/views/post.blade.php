@@ -17,8 +17,11 @@
             <i class="fa fa-bar-chart" aria-hidden="true"></i> {{$post['view']}} görüntülenme
         </span>
         <span class="pull-right">
-            <span class="fa fa-clock-o"></span>
-            {{date("d F Y H:m", strtotime($post['publish_date']))}} tarihinde yayınlandı.
+             @if(!empty($post['publish_date']))
+                <span class="fa fa-clock-o"></span>
+                {{date("d F Y H:m", strtotime($post['publish_date']))}} tarihinde yayınlandı.
+            @endif
+
         </span>
 
 

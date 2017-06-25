@@ -25,4 +25,5 @@ class Mapping
         }
         return $postArr;
     }
+
 }

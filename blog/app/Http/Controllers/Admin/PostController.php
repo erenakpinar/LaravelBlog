@@ -13,7 +13,8 @@ class PostController extends Controller
 {
     public function postList()
     {
-        $posts = Models\PostModel::getPost();
+        $posts = Models\PostModel::getPostList();
+
         return View('admin/post/postlist',['posts' => $posts]);
     }
 
