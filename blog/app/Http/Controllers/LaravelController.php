@@ -33,7 +33,6 @@ class LaravelController extends Controller
 
         Models\PostModel::postViewUpdate($post->id); // görüntülenme arttırmak
         return view('post', ['post' => $post]);
-
     }
 
     public function about()

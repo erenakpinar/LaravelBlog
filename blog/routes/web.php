@@ -18,4 +18,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index', function () {
 
 })->name('home');
-Route::get('/admin/postlist', 'PostController@postList');
+Route::get('/admin/post/postlist', 'PostController@postList');
+Route::get('/admin/post/create', 'PostController@postCreate');
+Route::get('/admin/post/edit/{id?}', 'PostController@postEdit');
+Route::get('/admin/post/delete/{id?}', 'PostController@postDelete');

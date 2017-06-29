@@ -26,7 +26,7 @@ class PostModel extends BaseModel
     public static function getPostList()
     {
         return self::join('users', 'post.author_id', '=', 'users.id')
-            ->select('post.id', 'post.name', 'post.view', 'post.publish_date', 'post.created_date', 'post.header_img', 'post.status', 'users.name as user_name', 'users.profile_img','post.seo_url')
+            ->select('post.id', 'post.name', 'post.view', 'post.publish_date', 'post.created_date', 'post.header_img', 'post.status', 'users.name as user_name', 'users.profile_img', 'post.seo_url')
             ->get()
             ->toArray();
 
@@ -74,6 +74,16 @@ class PostModel extends BaseModel
             ->orWhere('content', 'ilike', "%$value%")
             ->join('author', 'post.author_id', '=', 'author.id')
             ->get();
+    }
+
+    public static function postDelete($id)
+    {
+        $return = self::where('id', $id)
+            ->delete();
+        if ($return) {
+            return $return;
+        }
+        return false;
     }
 
     public static function getPostCount()

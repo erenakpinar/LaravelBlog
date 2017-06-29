@@ -7,7 +7,7 @@
 
 
     <p class="lead">
-        <i class="fa fa-user"></i> <a href="#">{{$post->first_name . " " . $post->last_name}}</a>
+        <i class="fa fa-user"></i> <a href="#">{{$post->name }}</a>
 
     </p>
 

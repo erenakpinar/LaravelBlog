@@ -95,7 +95,6 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- Control Sidebar Toggle Button -->
                     <li>
                         <a href="{{ route('logout') }}"
                            onclick="event.preventDefault();
@@ -107,11 +106,7 @@
         </nav>
     </header>
 
-    <!-- =============================================== -->
-
-    <!-- Left side column. contains the sidebar -->
     <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
             <!-- Sidebar user panel -->
             <div class="user-panel">
@@ -135,7 +130,6 @@
                 </div>
             </form>
             <!-- /.search form -->
-            <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
                 <li>
@@ -153,7 +147,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu"><li>
-                            <a href="{{url('/admin/postlist')}}"><i class="fa fa-navicon"></i> Post List</a></li>
+                            <a href="{{url('/admin/post/postlist')}}"><i class="fa fa-navicon"></i> Post List</a></li>
                         <li><a href=""><i class="fa fa-plus-circle"></i> New Post</a></li>
                     </ul>
                 </li>
@@ -161,14 +155,9 @@
 
             </ul>
         </section>
-        <!-- /.sidebar -->
     </aside>
 
-    <!-- =============================================== -->
-
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
                 @yield('page')
